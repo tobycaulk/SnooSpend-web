@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+    <body layout:fragment="content">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="text-center">See what Redditors are buying</h2>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="col-sm-3">
+            <article class="col-item">
+                <div class="photo">
+                    <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image"> </a>
+                </div>
+                <div class="info">
+                    <div class="row">
+                        <div class="price-details col-md-6">
+                            <p class="details">
+                                Lorem ipsum dolor sit amet, consectetur..
+                            </p>
+                            <h1>Sample Product</h1>
+                            <span class="price-new">$110.00</span>
+                        </div>
+                    </div>
+                    <div class="separator clear-left">
+                        <p class="btn-add">
+                            <i class="fa fa-shopping-cart"></i><a href="#" class="hidden-sm">Add to cart</a>
+                        </p>
+                        <p class="btn-details">
+                            <a href="#" class="hidden-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to wish list"><i class="fa fa-heart"></i></a>
+                            <a href="#" class="hidden-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </article>
+        </div>
+
+        <div class="album text-muted">
+            <div class="row">
+                <th:block th:each="product : ${products}">
+                    <div class="card">
+                        <img class="product-img" th:src="${product.imageUrl}" data-holder-rendered="true"/>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+
+            <!--<th:block th:each="product : ${products}">
+                <div class="row">
+                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-2">
+                                <img class="card-img-top product-img" th:src="${product.imageUrl}" alt="Card image cap"/>
+                            </div>
+                            <div class="col-10">
+                                <h3><a class="product-title" th:href="${product.url}" th:text="${product.title}"></a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted" th:inline="text">Submitted on [[${product.createDate}]] with [[${product.popularity}]] references</small>
+                    </div>
+                </div>
+                </div>
+            </th:block>
+            <hr/>
+            <br/>-->
+
+        <!--<th:block th:each="product : ${products}">
+                    <div class="card col-6">
+                        <img class="card-img-top product-img" th:src="${product.imageUrl}" alt="Card image cap"/>
+                        <div class="card-block">
+                            <h4 class="card-title" th:text="${product.title}"></h4>
+                            <a th:href="${product.url}" class="card-link">Buy</a>
+                        </div>
+
+                    </div>
+                </th:block>-->
+    </body>
+</html>
