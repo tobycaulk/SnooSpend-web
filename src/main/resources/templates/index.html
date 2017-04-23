@@ -1,84 +1,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
     <body layout:fragment="content">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h2 class="text-center">See what Redditors are buying</h2>
+        <div class="container">
+
+            <div class="row justify-content-center mt-1">
+                <div class="col-12">
+                    <h1 class="text-center" id="redditor-heading">What are Redditors buying?</h1>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-1">
+                <div class="col-12">
+                    <h2 class="text-center" th:inline="text"><span class="highlight-background-color">[[${productCount}]]</span> Amazon products linked since <span class="highlight-background-color">April 2017</span></h2>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-1">
+                <div class="col-8">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search for..."/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-1">
+                <div class="col-12">
+                    <div class="card card-block">
+                        <th:block th:each="product : ${products}">
+                            <div class="row mb-2 product-card">
+                                <div class="col-3 pt-1 pb-2">
+                                    <div class="view overlay hm-white-slight">
+                                        <img th:src="${product?.productItem?.largeImage?.url}" class="img-fluid"/>
+                                    </div>
+                                </div>
+                                <div class="col-9 pt-1">
+                                    <h4><span class="badge badge-success" th:inline="text">[[${product?.productItem?.itemAttributes?.productGroup}]] </span><a th:href="${product?.productItem?.detailPageUrl}" th:text="${product?.productItem?.itemAttributes?.title}"></a></h4>
+                                    <hr/>
+                                    <p th:inline="text"><span class="primary-highlight-color">[[${product?.popularity}]]</span> references on Reddit</p>
+                                    <p th:utext="${product?.productItem?.editorialReviews?.editorialReview[0]?.content}"></p>
+                                    <p th:inline="text"><span style="color: green;">[[${product?.productItem?.itemAttributes?.listPrice?.formattedPrice}]] </span>current price on Amazon</p>
+                                    <a class="btn btn-primary waves-effect waves-light button-background" th:href="${product?.productItem?.detailPageUrl}">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i> Buy on Amazon
+                                    </a>
+                                </div>
+                            </div>
+                        </th:block>
+                        <div class="row justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" th:href="@{/page/__${pages[0]}__}" th:text="${pages[0]}"></a></li>
+                                    <li class="page-item"><a class="page-link" th:href="@{/page/__${pages[1]}__}" th:text="${pages[1]}"></a></li>
+                                    <li class="page-item"><a class="page-link" th:href="@{/page/__${pages[2]}__}" th:text="${pages[2]}"></a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <br/>
-
-        <div class="col-sm-3">
-            <article class="col-item">
-                <div class="photo">
-                    <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image"> </a>
-                </div>
-                <div class="info">
-                    <div class="row">
-                        <div class="price-details col-md-6">
-                            <p class="details">
-                                Lorem ipsum dolor sit amet, consectetur..
-                            </p>
-                            <h1>Sample Product</h1>
-                            <span class="price-new">$110.00</span>
-                        </div>
-                    </div>
-                    <div class="separator clear-left">
-                        <p class="btn-add">
-                            <i class="fa fa-shopping-cart"></i><a href="#" class="hidden-sm">Add to cart</a>
-                        </p>
-                        <p class="btn-details">
-                            <a href="#" class="hidden-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to wish list"><i class="fa fa-heart"></i></a>
-                            <a href="#" class="hidden-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare"><i class="fa fa-exchange"></i></a>
-                        </p>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </article>
-        </div>
-
-        <div class="album text-muted">
-            <div class="row">
-                <th:block th:each="product : ${products}">
-                    <div class="card">
-                        <img class="product-img" th:src="${product.imageUrl}" data-holder-rendered="true"/>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                </th:block>
-            </div>
-        </div>
-
-            <!--<th:block th:each="product : ${products}">
-                <div class="row">
-                <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="card-block">
-                        <div class="row">
-                            <div class="col-2">
-                                <img class="card-img-top product-img" th:src="${product.imageUrl}" alt="Card image cap"/>
-                            </div>
-                            <div class="col-10">
-                                <h3><a class="product-title" th:href="${product.url}" th:text="${product.title}"></a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted" th:inline="text">Submitted on [[${product.createDate}]] with [[${product.popularity}]] references</small>
-                    </div>
-                </div>
-                </div>
-            </th:block>
-            <hr/>
-            <br/>-->
-
-        <!--<th:block th:each="product : ${products}">
-                    <div class="card col-6">
-                        <img class="card-img-top product-img" th:src="${product.imageUrl}" alt="Card image cap"/>
-                        <div class="card-block">
-                            <h4 class="card-title" th:text="${product.title}"></h4>
-                            <a th:href="${product.url}" class="card-link">Buy</a>
-                        </div>
-
-                    </div>
-                </th:block>-->
     </body>
 </html>
