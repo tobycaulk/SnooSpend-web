@@ -10,7 +10,7 @@ public class ProductItem {
     @JsonProperty("LargeImage")
     public Image largeImage;
 
-    @JsonProperty("ItemAtributes")
+    @JsonProperty("ItemAttributes")
     public ItemAttributes itemAttributes;
 
     @JsonProperty("detailPageURL")
@@ -19,12 +19,12 @@ public class ProductItem {
     @JsonProperty("EditorialReviews")
     public EditorialReviews editorialReviews;
 
-    public static class Image {
+    public class Image {
         @JsonProperty("URL")
         public String url;
     }
 
-    public static class ItemAttributes {
+    public class ItemAttributes {
         @JsonProperty("ProductGroup")
         public String productGroup;
 
@@ -34,17 +34,17 @@ public class ProductItem {
         @JsonProperty("ListPrice")
         public ListPrice listPrice;
 
-        public static class ListPrice {
+        public class ListPrice {
             @JsonProperty("FormattedPrice")
             public String formattedPrice;
         }
     }
 
-    public static class EditorialReviews {
+    public class EditorialReviews {
         @JsonProperty("EditorialReview")
         public List<EditorialReview> editorialReview = new ArrayList<>();
 
-        public static class EditorialReview {
+        public class EditorialReview {
             @JsonProperty("Content")
             public String content;
         }

@@ -44,3 +44,11 @@ body {
 	bottom: 0;
 	position: absolute;
 }
+
+.vote-emoji {
+    font-size: 250%;
+}
+
+.btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+	background-color: #974A5C !important;
+}

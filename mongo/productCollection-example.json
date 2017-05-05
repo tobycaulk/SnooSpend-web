@@ -1,0 +1,14 @@
+db.productCollection.insert({
+    "_id": ObjectId("590610311a0aae59f285b5f3"),
+    "_class": "com.tcaulk.snoospend.model.ProductCollection",
+    "name": "Programming resources",
+    "description": "Want to learn more about programming? This collection is for you!",
+    "asins": [
+        "0984782850",
+        "1491950293",
+        "1491918896",
+        "0321356683",
+        "0596806752",
+        "1785883801"
+    ]
+});

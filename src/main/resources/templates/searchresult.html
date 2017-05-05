@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+<body layout:fragment="content">
+<div class="container">
+
+    <div class="row justify-content-center mt-1">
+        <div class="col-12">
+            <h2 class="text-center" th:inline="text">Amazon products for <span class="highlight-background-color">[[${query}]]</span></h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-1">
+        <div class="col-12">
+            <div class="card card-block">
+                <th:block th:each="product : ${products}">
+                    <div class="row mb-2 product-card">
+                        <div class="col-3 pt-1 pb-2">
+                            <div class="view overlay hm-white-slight">
+                                <img th:src="${product?.imageUrl}" class="img-fluid"/>
+                            </div>
+                        </div>
+                        <div class="col-9 pt-1">
+                            <h4><span class="badge badge-success" th:inline="text">[[${product?.productGroup}]]</span><a th:href="@{/product/__${product?.asin}__}" th:text="${product?.title}"></a></h4>
+                            <hr/>
+                            <p th:inline="text"><span class="primary-highlight-color">[[${product?.popularity}]]</span> references on Reddit</p>
+                            <p>
+                                <th:block th:each="subreddit : ${product?.subreddits}">
+                                    <span class="badge badge-success button-background" th:inline="text">[[${subreddit}]]</span>
+                                </th:block>
+                            </p>
+                            <p th:utext="${product?.description}"></p>
+                            <a class="btn btn-primary waves-effect waves-light button-background" th:href="${product?.detailPageUrl}">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i> Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-1">
+        <div class="col-12">
+            <div class="card card-block">
+                <strong>Subscribe to our newsletter</strong>
+                <p>Once a month we'll send you an email informing you of the hottest items linked on Reddit!</p>
+                <div class="md-form">
+                    <input type="text" id="form2" class="form-control"/>
+                    <label for="form2">Your email</label>
+                    <button class="btn btn-primary waves-effect waves-light button-background">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

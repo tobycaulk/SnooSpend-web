@@ -7,6 +7,7 @@ buildscript {
     }
 }
 
+apply plugin: 'application'
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
@@ -16,9 +17,13 @@ repositories {
     mavenCentral()
 }
 
+mainClassName="com.tcaulk.snoospend.Application"
+
 jar {
-    baseName = 'snoospends'
-    version =  '1.0.0'
+    manifest.attributes("Main-Class": mainClassName)
+
+    baseName = 'snoospend'
+    version =  '1.2.1'
 }
 
 dependencies {

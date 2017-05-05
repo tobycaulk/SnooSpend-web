@@ -1,0 +1,14 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+    <body layout:fragment="content">
+        <div class="container">
+
+            <div class="row">
+               <div class="col-12 text-center mt-3">
+                   <h1 class="text-center">🎉 Thank you for signing up for our newsletter! 🎉</h1>
+                   <h2 class="text-center" th:inline="text">We'll send an email to <span class="highlight-background-color">[[${email}]]</span> every month with the most loved Amazon items on Reddit!</h2>
+               </div>
+            </div>
+
+        </div>
+    </body>
+</html>
