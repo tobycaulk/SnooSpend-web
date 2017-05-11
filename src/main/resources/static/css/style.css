@@ -45,10 +45,20 @@ body {
 	position: absolute;
 }
 
-.vote-emoji {
-    font-size: 250%;
-}
-
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
 	background-color: #974A5C !important;
+}
+
+.product-collection-card:hover {
+	background-color: #bd5d70 !important;
+	-webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+}
+
+.product-collection-card {
+	background-color: #333 !important;
+	-webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
 }

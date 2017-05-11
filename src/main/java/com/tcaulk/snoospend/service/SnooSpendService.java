@@ -86,28 +86,42 @@ public class SnooSpendService {
     }
 
     public DisplayProductCollection getCollection(String productCollectionId) {
-        DisplayProductCollection collection = new DisplayProductCollection();
-        List<DisplayProduct> displayProducts = new ArrayList<>();
-        List<String> subreddits = new ArrayList<>();
+        return constructDisplayProductCollection(productCollectionRepository.findOne(productCollectionId));
+    }
 
-        ProductCollection productCollection  = productCollectionRepository.findOne(productCollectionId);
+    public List<DisplayProductCollection> getDisplayProductCollectionPage(int page, int size) {
+        PageRequest pageRequest = new PageRequest(page, size);
+
+        return productCollectionRepository.findAll(pageRequest).getContent().stream().map(collection -> {
+            return constructDisplayProductCollection(collection);
+        }).collect(Collectors.toList());
+    }
+
+    private DisplayProductCollection constructDisplayProductCollection(ProductCollection productCollection) {
+        DisplayProductCollection collection = new DisplayProductCollection();
+
+        List<String> subreddits = new ArrayList<>();
+        List<DisplayProduct> displayProducts = new ArrayList<>();
         if(productCollection != null) {
             productCollection.getAsins().forEach(asin -> {
                 Product product = productRepository.findByAsin(asin);
-                if(product != null) {
+                if (product != null) {
                     displayProducts.add(constructDisplayProduct(product));
                     product.getSubreddits().forEach(subreddit -> {
-                        if(!subreddits.contains(subreddit)) {
+                        if (!subreddits.contains(subreddit)) {
                             subreddits.add(subreddit);
                         }
                     });
                 }
             });
 
+            collection.setId(productCollection.getId());
             collection.setName(productCollection.getName());
             collection.setDescription(productCollection.getDescription());
             collection.setDisplayProducts(displayProducts);
-            collection.setSubreddits(subreddits.stream().distinct().<String>map(subreddit -> { return "/r/" + subreddit; }).collect(Collectors.toList()));
+            collection.setSubreddits(subreddits.stream().distinct().<String>map(subreddit -> {
+                return "/r/" + subreddit;
+            }).collect(Collectors.toList()));
         }
 
         return collection;

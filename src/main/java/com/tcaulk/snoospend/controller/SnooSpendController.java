@@ -34,6 +34,7 @@ public class SnooSpendController {
         model.addAttribute("products", snooSpendService.getProductPage(page < 0 ? 0 : page >= 1 ? page - 1 : page));
         model.addAttribute("productCount", snooSpendService.getProductCount());
         model.addAttribute("pages", page > 1 ? Arrays.asList(page - 1, page + 1) : Arrays.asList(page + 1));
+        model.addAttribute("productCollections", snooSpendService.getDisplayProductCollectionPage(0, 4));
 
         return "index";
     }
@@ -70,5 +71,10 @@ public class SnooSpendController {
         model.addAttribute("subreddits", collection.getSubreddits());
 
         return "collection";
+    }
+
+    @GetMapping("/statistics")
+    public String getStatistics() {
+        return "statistics";
     }
 }

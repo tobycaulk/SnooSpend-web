@@ -18,6 +18,15 @@
         enable_page_level_ads: true
       });
     </script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- MDB CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css"/>
+    <!-- MDB JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/style.css}"/>
 </head>
 
 <body>
@@ -33,9 +42,9 @@
                     <li class="nav-item">
                         <a class="nav-link">Collections</a>
                     </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link">Contact</a>
-                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/statistics">Stats</a>
+                    </li>
                 </ul>
                 <form class="form-inline waves-effect waves-light" action="/search" method="get">
                     <input class="form-control" type="text" name="query" placeholder="Find an item!"/>
@@ -56,15 +65,6 @@
         </div>
     </footer>
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <!-- MDB CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css"/>
-    <!-- MDB JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{~/css/style.css}"/>
     <script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- SnooSpend -->
     <ins class="adsbygoogle"

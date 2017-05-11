@@ -14,6 +14,21 @@
                 </div>
             </div>
 
+            <div class="row">
+                <th:block th:each="productCollection : ${productCollections}">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center mt-1">
+                        <a th:href="@{/collection/__${productCollection?.id}__}">
+                            <div class="card card-inverse product-collection-card">
+                                <div class="card-block">
+                                    <h4 class="card-title" th:text="${productCollection?.name}"></h4>
+                                    <p class="card-text" th:text="${productCollection?.description}"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </th:block>
+            </div>
+
             <div class="row justify-content-center mt-1">
                 <div class="col-12">
                     <div class="card card-block">
